@@ -54,6 +54,7 @@ exports.sendMail = async function (psid, msg) {
         from: configs.email_server.gmail_username,
         to: configs.email_server.forward_alias || configs.email_server.gmail_username,
         subject: sender_details,
+        inReplyTo: sender_details,
         text: msg
     };
 
