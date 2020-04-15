@@ -84,7 +84,7 @@ app.post('/webhook', function (req, res) {
 
           var user = API.getUser(messagingEvent.sender.id, function (user) {
             if (messagingEvent.message) {
-              await ResponseHandler.receivedMessage(user, messagingEvent);
+              ResponseHandler.receivedMessage(user, messagingEvent);
 
             } else if (messagingEvent.postback) {
               ResponseHandler.receivedPostback(user, messagingEvent);

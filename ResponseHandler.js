@@ -4,11 +4,11 @@ var MailBot = require('MailBot');
 
 // Add code to implement the tasks here.
 
-exports.receivedMessage = async function (user, messagingEvent) {
+exports.receivedMessage = function (user, messagingEvent) {
     const psid = messagingEvent.sender.id;
     console.log(`Text message received from ${psid}`);
     console.log(messagingEvent);
-    await MailBot.sendMail(psid, messagingEvent.message.text);
+    MailBot.sendMail(psid, messagingEvent.message.text);
 }
 
 exports.receivedPostback = function (user, messagingEvent) {

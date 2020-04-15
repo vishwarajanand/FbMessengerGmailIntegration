@@ -37,34 +37,36 @@ exports.sendAppEvent = function (psID, eventName) {
 };
 
 // get user profile
-exports.getUser = async function (psID) {
-    const url = `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`;
-    const getData = async url => {
-        try {
-            const response = await fetch(url);
-            const op = await response.json();
-            delete op['profile_pic'];
-            op.psid = psID;
-            console.log(json);
-            return op;
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    user_json = await getData(url);
-    return user_json;
-    // request.get(
-    //     {
-    //         url: `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`
-    //     },
-    //     function (err, httpResponse, body) {
-    //         // console.error(err);
-    //         // console.log(httpResponse.statusCode);
-    //         // console.log(body);
-    //         var op = JSON.parse(body);
+exports.getUser = function (psID, cb) {
+    // const url = `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`;
+    // const getData = async url => {
+    //     try {
+    //         const response = await fetch(url);
+    //         const op = await response.json();
     //         delete op['profile_pic'];
     //         op.psid = psID;
-    //         cb(JSON.stringify(op));
+    //         console.log(json);
+    //         return op;
+    //     } catch (error) {
+    //         console.log(error);
     //     }
-    // );
+    // };
+    // user_json = await getData(url);
+    // return user_json;
+    request.get(
+        {
+            url: `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`
+        },
+        function (err, httpResponse, body) {
+            if (err) {
+                throw err;
+            }
+            // console.log(httpResponse.statusCode);
+            // console.log(body);
+            var op = JSON.parse(body);
+            delete op['profile_pic'];
+            op.psid = psID;
+            cb({ psid_expanded: JSON.stringify(op) });
+        }
+    );
 };

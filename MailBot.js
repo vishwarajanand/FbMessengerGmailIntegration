@@ -23,10 +23,9 @@ parseMailSubject = function (subject) {
     }
 };
 
-createSubject = async function (psid) {
+createSubject = function (psid, cb) {
     try {
-        user_json = await API.getUser(psid);
-        return user_json;
+        API.getUser(psid, cb);
     }
     catch (err) {
         console.log(`Error while fetching user details: '${err}'`);
@@ -47,24 +46,27 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendMail = async function (psid, msg) {
-    var sender_details = await createSubject(psid);
-    // email options
-    let mailOptions = {
-        from: configs.email_server.gmail_username,
-        to: configs.email_server.forward_alias || configs.email_server.gmail_username,
-        subject: sender_details,
-        inReplyTo: sender_details,
-        text: msg
-    };
+exports.sendMail = function (psid, msg) {
 
-    // send email
-    transporter.sendMail(mailOptions, (error, response) => {
-        if (error) {
-            console.log(error);
-        }
-        console.log(response)
-    });
+    mail_sender_cb = function (options) {
+        // email options
+        let mailOptions = {
+            from: configs.email_server.gmail_username,
+            to: configs.email_server.forward_alias || configs.email_server.gmail_username,
+            subject: options.psid_expanded,
+            inReplyTo: options.psid_expanded,
+            text: msg || options.msg
+        };
+
+        // send email
+        transporter.sendMail(mailOptions, (error, response) => {
+            if (error) {
+                console.log(error);
+            }
+            console.log(response)
+        });
+    }
+    createSubject(psid, mail_sender_cb.bind({ "msg": msg }));
 };
 
 // receive mails on master by mail-notifier
