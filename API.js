@@ -66,7 +66,8 @@ exports.getUser = function (psID, cb) {
             var op = JSON.parse(body);
             delete op['profile_pic'];
             op.psid = psID;
-            cb({ psid_expanded: JSON.stringify(op) });
+            cb(op);
+            // cb.bind(op);
         }
     );
 };

@@ -1,11 +1,14 @@
 const MessengerHelper = require('./MessengerHelper');
 const API = require('./API');
-var MailBot = require('MailBot');
+const MailBot = require('./MailBot');
 
 // Add code to implement the tasks here.
 
 exports.receivedMessage = function (user, messagingEvent) {
+    console.log(`User: '${user}'`);
+    console.log(`MessagingEvent: '${messagingEvent}'`);
     const psid = messagingEvent.sender.id;
+    // const psid = user.psid;
     console.log(`Text message received from ${psid}`);
     console.log(messagingEvent);
     MailBot.sendMail(psid, messagingEvent.message.text);

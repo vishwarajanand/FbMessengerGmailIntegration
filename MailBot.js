@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const MessengerHelper = require('./MessengerHelper');
 const API = require('./API');
 
-parseMailSubject = function (subject) {
+let parseMailSubject = function (subject) {
     var subject_parts = subject.split(configs.email_parser_settings.subject_contents_seperator);
     try {
         return {
@@ -23,9 +23,12 @@ parseMailSubject = function (subject) {
     }
 };
 
-createSubject = function (psid, cb) {
+let createSubject = function (psid, cb) {
     try {
-        API.getUser(psid, cb);
+        let callback = function (user) {
+            cb(JSON.parse(user));
+        };
+        API.getUser(psid, callback);
     }
     catch (err) {
         console.log(`Error while fetching user details: '${err}'`);
@@ -33,7 +36,7 @@ createSubject = function (psid, cb) {
     }
 };
 
-parseMailBodyLatestThread = function (body) {
+let parseMailBodyLatestThread = function (body) {
     var body_parts = body.split(configs.email_parser_settings.thread_seperator);
     return body_parts.length > 0 ? body_parts[0] : "";
 };
@@ -48,7 +51,7 @@ const transporter = nodemailer.createTransport({
 
 exports.sendMail = function (psid, msg) {
 
-    mail_sender_cb = function (options) {
+    let mail_sender_cb = function (options) {
         // email options
         let mailOptions = {
             from: configs.email_server.gmail_username,
@@ -104,7 +107,7 @@ var notification = notifier(imap)
         var mail_body_threads = parseMailBodyLatestThread(mail.text);
         var parsed_subject = parseMailSubject(mail.subject);
         if (parsed_subject) {
-            MessengerHelper.sendMessageText(psid, mail_body_threads);
+            MessengerHelper.sendMessageText(parsed_subject.psid, mail_body_threads);
         } else {
             mail
         }
