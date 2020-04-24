@@ -23,7 +23,7 @@
         "APP_NAME": "vishwarajanand_XXXXXXX_example",
         "APP_SECRET": "32XXXXXXX6d"
     },
-    "braintee_configs": {
+    "braintee_settings": {
         "MERCHANT_ID": "t9XXXXXXX6",
         "PUBLIC_KEY": "xfXXXXXXX2",
         "PRIVATE_KEY": "9dXXXXXXX3c"
