@@ -11,7 +11,12 @@ exports.receivedMessage = function (user, messagingEvent) {
     // const psid = user.psid;
     console.log(`Text message received from ${psid}`);
     console.log(messagingEvent);
-    MailBot.sendMail(psid, messagingEvent.message.text);
+    try{
+        MailBot.sendMail(psid, messagingEvent.message.text);
+    }
+    catch(err){
+        console.log(`MAIL SENDING FAILED: '${err}'`);
+    }
 }
 
 exports.receivedPostback = function (user, messagingEvent) {

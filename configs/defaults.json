@@ -29,6 +29,6 @@
         "PRIVATE_KEY": "9dXXXXXXX3c"
     },
     "server_settings": {
-        "PORT": "3000"
+        "PORT": "3001"
     }
 }

@@ -69,8 +69,8 @@ exports.sendMail = function (psid, msg) {
     };
     let mail_sender_cb = function (subject) {
         mailOptions.subject = subject;
-        mailOptions.inReplyTo = user.subject;
-        mailOptions.reference = user.subject;
+        mailOptions.inReplyTo = subject;
+        mailOptions.reference = subject;
 
         // send email
         transporter.sendMail(mailOptions, (error, response) => {
@@ -115,21 +115,26 @@ var notification = notifier(imap)
         console.log(mail);
 
         // get the message
-        var mail_body_threads = parseMailBodyLatestThread(mail.text);
-        var parsed_subject = parseMailSubject(mail.subject);
-        if (parsed_subject) {
-            MessengerHelper.sendMessageText(parsed_subject.psid, mail_body_threads);
-        } else {
-            console.log("!! MAIL PARSING FAILED !!");
+        try {
+            var mail_body_threads = parseMailBodyLatestThread(mail.text);
+            var parsed_subject = parseMailSubject(mail.subject);
+            if (parsed_subject)
+                MessengerHelper.sendMessageText(parsed_subject.psid, mail_body_threads);
+        }
+        catch (err) {
+            console.log(`MESSAGE SENDING FAILED: '${err}'`);
         }
     }).start();
 
 notification.on('end', function () {
     console.log('...notification ended...');
+    // restarting is the best option to avoid silent dropping of messages
+    // UNSAFE - can cause cascading failures
+    notification.start();
 });
 
 notification.on('error', function (err) {
     console.log('...notification error : %s', err);
 });
 
-// notification.start();
+notification.start();
