@@ -58,7 +58,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.sendMail = function (psid, msg) {
-    
+
     // email options
     let mailOptions = {
         from: configs.email_server.gmail_username,
@@ -132,4 +132,4 @@ notification.on('error', function (err) {
     console.log('...notification error : %s', err);
 });
 
-notification.start();
+// notification.start();

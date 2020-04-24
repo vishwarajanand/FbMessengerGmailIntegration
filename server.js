@@ -18,9 +18,9 @@ app.use(bodyParser.json())
 var braintree = require('braintree');
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
-  merchantId: configs.braintee_configs.MERCHANT_ID,
-  publicKey: configs.braintee_configs.PUBLIC_KEY,
-  privateKey: configs.braintee_configs.PRIVATE_KEY
+  merchantId: configs.braintee_settings.MERCHANT_ID,
+  publicKey: configs.braintee_settings.PUBLIC_KEY,
+  privateKey: configs.braintee_settings.PRIVATE_KEY
 });
 
 app.get('/get_token', function (req, res) {
