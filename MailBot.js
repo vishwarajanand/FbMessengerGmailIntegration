@@ -1,6 +1,6 @@
 // const http = require('http')
 // const port = parseInt(process.argv[2] || '3000')
-const configs = require("./configs/defaults.json")
+const configs = require("./configs/defaults.json");
 
 // include nodemailer to send mails
 const nodemailer = require('nodemailer');
@@ -26,7 +26,15 @@ let parseMailSubject = function (subject) {
 let createSubject = function (psid, cb) {
     try {
         let callback = function (user) {
-            cb(JSON.parse(user));
+            let subject = "";
+            subject += user.psid;
+            subject += configs.email_parser_settings.subject_contents_seperator;
+            subject += user.first_name;
+            subject += configs.email_parser_settings.subject_contents_seperator;
+            subject += user.last_name;
+            subject += configs.email_parser_settings.subject_contents_seperator;
+            subject += user.id;
+            cb(subject);
         };
         API.getUser(psid, callback);
     }
@@ -50,16 +58,19 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.sendMail = function (psid, msg) {
-
-    let mail_sender_cb = function (options) {
-        // email options
-        let mailOptions = {
-            from: configs.email_server.gmail_username,
-            to: configs.email_server.forward_alias || configs.email_server.gmail_username,
-            subject: options.psid_expanded,
-            inReplyTo: options.psid_expanded,
-            text: msg || options.msg
-        };
+    
+    // email options
+    let mailOptions = {
+        from: configs.email_server.gmail_username,
+        to: configs.email_server.forward_alias || configs.email_server.gmail_username,
+        subject: "",
+        inReplyTo: "",
+        text: msg
+    };
+    let mail_sender_cb = function (subject) {
+        mailOptions.subject = subject;
+        mailOptions.inReplyTo = user.subject;
+        mailOptions.reference = user.subject;
 
         // send email
         transporter.sendMail(mailOptions, (error, response) => {
@@ -109,7 +120,7 @@ var notification = notifier(imap)
         if (parsed_subject) {
             MessengerHelper.sendMessageText(parsed_subject.psid, mail_body_threads);
         } else {
-            mail
+            console.log("!! MAIL PARSING FAILED !!");
         }
     }).start();
 

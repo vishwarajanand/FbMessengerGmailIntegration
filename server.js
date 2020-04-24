@@ -1,5 +1,6 @@
 // Not needed in Glitch
 require('dotenv').config();
+const configs = require("./configs/defaults.json");
 
 // init project
 var express = require('express');
@@ -17,9 +18,9 @@ app.use(bodyParser.json())
 var braintree = require('braintree');
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
-  merchantId: process.env.MERCHANT_ID,
-  publicKey: process.env.PUBLIC_KEY,
-  privateKey: process.env.PRIVATE_KEY
+  merchantId: configs.braintee_configs.MERCHANT_ID,
+  publicKey: configs.braintee_configs.PUBLIC_KEY,
+  privateKey: configs.braintee_configs.PRIVATE_KEY
 });
 
 app.get('/get_token', function (req, res) {
@@ -111,6 +112,6 @@ app.post('/webhook', function (req, res) {
 });
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+var listener = app.listen(configs.server_settings.PORT, function () {
+  console.log('Your app server is listening on port ' + configs.server_settings.PORT);
 });

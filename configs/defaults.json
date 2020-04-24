@@ -1,0 +1,34 @@
+{
+    "email_server": {
+        "gmail_username": "to be set before start, required",
+        "gmail_password": "to be set before start, required",
+        "forward_alias": "to be set before start, optional"
+    },
+    "email_parser_settings": {
+        "subject_contents_seperator": "____",
+        "thread_seperator": "________________________________"
+    },
+    "failure_settings": {
+        "alert_alias": "to be set before start, required",
+        "alert_subject": "FB Messenger Bot's failed somewhere, oops!"
+    },
+    "fb_page_settings": {
+        "PAGE_ID": "308XXXXXX3318",
+        "PAGE_URL": "https://www.facebook.com/XXXXXXX",
+        "PAGE_NAME": "XXXXXXX",
+        "PAGE_ACCESS_TOKEN": "EAAD9XXXXXXXtNu4c8ZD"
+    },
+    "fb_app_settings": {
+        "APP_ID": "279XXXXXXX38",
+        "APP_NAME": "vishwarajanand_XXXXXXX_example",
+        "APP_SECRET": "32XXXXXXX6d"
+    },
+    "braintee_configs": {
+        "MERCHANT_ID": "t9XXXXXXX6",
+        "PUBLIC_KEY": "xfXXXXXXX2",
+        "PRIVATE_KEY": "9dXXXXXXX3c"
+    },
+    "server_settings": {
+        "PORT": "3000"
+    }
+}

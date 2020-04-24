@@ -1,4 +1,4 @@
-const config = require("./config");
+const configs = require("./configs/defaults.json");
 const request = require("request");
 const fetch = require("node-fetch");
 const BASE_GRAPH_API_PREFIX = "https://graph.facebook.com/v6.0/";
@@ -13,7 +13,7 @@ exports.sendAppEvent = function (psID, eventName) {
     };
     request.post(
         {
-            url: `https://graph.facebook.com/${config.APPID}/activities`,
+            url: `https://graph.facebook.com/${configs.fb_app_settings.APP_ID}/activities`,
             form: {
                 event: "CUSTOM_APP_EVENTS",
                 custom_events: JSON.stringify([
@@ -24,7 +24,7 @@ exports.sendAppEvent = function (psID, eventName) {
                 advertiser_tracking_enabled: 1,
                 application_tracking_enabled: 1,
                 extinfo: JSON.stringify(["mb1"]),
-                page_id: config.PAGEID,
+                page_id: configs.fb_page_settings.PAGEID,
                 page_scoped_user_id: psID
             }
         },
@@ -38,7 +38,7 @@ exports.sendAppEvent = function (psID, eventName) {
 
 // get user profile
 exports.getUser = function (psID, cb) {
-    // const url = `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`;
+    // const url = `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${configs.fb_page_settings.PAGE_ACCESS_TOKEN}`;
     // const getData = async url => {
     //     try {
     //         const response = await fetch(url);
@@ -55,7 +55,7 @@ exports.getUser = function (psID, cb) {
     // return user_json;
     request.get(
         {
-            url: `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`
+            url: `https://graph.facebook.com/${psID}?fields=first_name,last_name,profile_pic&access_token=${configs.fb_page_settings.PAGE_ACCESS_TOKEN}`
         },
         function (err, httpResponse, body) {
             if (err) {

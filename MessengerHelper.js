@@ -1,4 +1,4 @@
-const config = require('./config');
+const configs = require("./configs/defaults.json");
 const request = require('request');
 
 exports.sendSenderAction = function (psid, action) {
@@ -11,7 +11,7 @@ exports.sendSenderAction = function (psid, action) {
     const options = {
         method: 'POST',
         uri: 'https://graph.facebook.com/v6.0/me/messages',
-        qs: { access_token: config.PAGE_ACCESS_TOKEN },
+        qs: { access_token: configs.fb_page_settings.PAGE_ACCESS_TOKEN },
         json: messageObj
     }
 
@@ -34,7 +34,7 @@ exports.sendMessageText = function (psid, message) {
     const options = {
         method: 'POST',
         uri: 'https://graph.facebook.com/v6.0/me/messages',
-        qs: { access_token: config.PAGE_ACCESS_TOKEN },
+        qs: { access_token: configs.fb_page_settings.PAGE_ACCESS_TOKEN },
         json: messageObj
     }
     this.sendSenderAction(psid, 'typing_on');
@@ -56,7 +56,7 @@ exports.sendMessageObj = function (psid, message) {
     const options = {
         method: 'POST',
         uri: 'https://graph.facebook.com/v6.0/me/messages',
-        qs: { access_token: config.PAGE_ACCESS_TOKEN },
+        qs: { access_token: configs.fb_page_settings.PAGE_ACCESS_TOKEN },
         json: messageObj
     }
 
