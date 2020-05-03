@@ -16,7 +16,7 @@ Integrating Facebook Messenger with Gmail
 
 1. Edit the `configs/defaults.json` with your own configurations.
 
-2. Host your bot on a publicly accessible URL:
+2. Host your bot on a publicly accessible URL, follow either of the below mentioned sub points:
 
 a. Use a glitch bot, which gives a URL like this: https://glitch.com/~anand-messenger-bot
 

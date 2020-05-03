@@ -119,7 +119,7 @@ var notification = notifier(imap)
             var mail_body_threads = parseMailBodyLatestThread(mail.text);
             var parsed_subject = parseMailSubject(mail.subject);
             if (parsed_subject)
-                MessengerHelper.sendMessageText(parsed_subject.psid, mail_body_threads);
+                MessengerHelper.sendMessageText(parsed_subject.id, mail_body_threads);
         }
         catch (err) {
             console.log(`MESSAGE SENDING FAILED: '${err}'`);
