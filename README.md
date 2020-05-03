@@ -9,7 +9,7 @@ https://youtu.be/gktg9gnl6EM
 
 ## Preview
 
-![Messenger bot sends a message](https://raw.githubusercontent.com/vishwarajanand/FbMessengerGmailIntegration/master/demos/Message-From-FB-Page.png.png "Messenger bot sends a message")
+![Messenger bot sends a message](https://raw.githubusercontent.com/vishwarajanand/FbMessengerGmailIntegration/master/demos/Message-From-FB-Page.png "Messenger bot sends a message")
 
 
 ![Email is forwarded via GMail](https://raw.githubusercontent.com/vishwarajanand/FbMessengerGmailIntegration/master/demos/Mail-Sent-via-Gmail.png "Email is forwarded via GMail")
