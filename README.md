@@ -24,7 +24,7 @@ https://youtu.be/gktg9gnl6EM
 2. Alternatively, one can use [ngrok](https://ngrok.com/) which provides a tunnel from a public URL to local development PC for easier testing and debugging.
 3. [Nodemon](https://www.npmjs.com/package/nodemon) helps live reload applications when the source is changed and loaded locally.
 
-# Configs
+## Configs
 Following configurations are required for boot starting:
 
 1. `gmail_username` and `gmail_password` which would be used for forwarding emails.
@@ -39,9 +39,9 @@ Following configurations are required for boot starting:
 
 2. Host your bot on a publicly accessible URL, follow either of the below-mentioned sub-points:
 
-a. Use a glitch bot, which gives a URL like this: https://glitch.com/~anand-messenger-bot
+    a. Use a glitch bot, which gives a URL like this: https://glitch.com/~anand-messenger-bot
 
-b. If you use ngrok, buy a certificate and host your server on `https` by `./tools/dev-ngrok.sh`. Can use a custom domain also to avoid making frequent changes in webhook URL.
+    b. If you use ngrok, buy a certificate and host your server on `https` by `./tools/dev-ngrok.sh`. Can use a custom domain also to avoid making frequent changes in webhook URL.
 
 3. Setup Facebook Messenger bot and provide the messenger bot URL for verification. The token is `TRAINING_BOT`.
 
