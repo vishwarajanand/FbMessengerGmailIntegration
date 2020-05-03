@@ -16,8 +16,11 @@ Integrating Facebook Messenger with Gmail
 
 1. Edit the `configs/defaults.json` with your own configurations.
 
-2. Use a glitch bot:
-https://glitch.com/~anand-messenger-bot
+2. Host your bot on a publicly accessible URL:
+
+a. Use a glitch bot, which gives a URL like this: https://glitch.com/~anand-messenger-bot
+
+b. If you use ngrok, buy a certificate and host your server on `https` by `./tools/dev-ngrok.sh`. Can use a custom domain also to avoid making frequent changes in webhook URL.
 
 3. Setup Facebook Messenger bot and provide the messenger bot URL for vertification. The token is `TRAINING_BOT`.
 

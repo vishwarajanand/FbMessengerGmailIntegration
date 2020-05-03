@@ -44,6 +44,7 @@ app.get("/", function (request, response) {
 
 //webhok verification
 app.get('/webhook', function (req, res) {
+  console.log(`FB Webhook verification request received: ${JSON.stringify(req.query)}`);
   if (req.query['hub.mode'] === 'subscribe' &&
     req.query['hub.verify_token'] === 'TRAINING_BOT') {
     console.log('FB Webhook verification request received');
