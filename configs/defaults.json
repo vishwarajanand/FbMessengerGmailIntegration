@@ -1,8 +1,8 @@
 {
     "email_server": {
-        "gmail_username": "to be set before start, required",
+        "gmail_username": "to be set before start eg yourownemail@gmail.com, required",
         "gmail_password": "to be set before start, required",
-        "forward_alias": "to be set before start, optional"
+        "forward_alias": "to be set before start eg yourownemail@customer-support.com, optional"
     },
     "email_parser_settings": {
         "subject_contents_seperator": "____",
@@ -29,6 +29,6 @@
         "PRIVATE_KEY": "9dXXXXXXX3c"
     },
     "server_settings": {
-        "PORT": "3001"
+        "PORT": "5000"
     }
 }
