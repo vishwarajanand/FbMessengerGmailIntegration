@@ -96,11 +96,11 @@ https://graph.facebook.com/v6.0/me/messages
 
 2. Nowhere to host the FB Messenger bot
 
-> Use glitch (free) or ngrok (paid to use https) or any other tunnelling software to get a public URL for your deployment. `ngrok http 3000`
+> Use glitch (free) or ngrok (paid to use https) or any other tunnelling software to get a public URL for your deployment. `ngrok http 5000`
 
 3. Cannot connect to the server
 
-> Check whether `require('dotenv').config();` is enabled or not. If not enabled and not running in glitch (where .env files are autoloaded), the server may not run on port 3000.
+> Check whether `require('dotenv').config();` is enabled or not. If not enabled and not running in glitch (where .env files are autoloaded), the server may not run on port 5000.
 
 ## Other Sources
 
