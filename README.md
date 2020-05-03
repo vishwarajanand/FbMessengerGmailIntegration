@@ -1,7 +1,13 @@
 # FbMessengerGmailIntegration
 Integrating Facebook Messenger with Gmail
 
-# Preview
+## Demo Video
+
+[![Watch on YouTube](https://img.youtube.com/vi/gktg9gnl6EM/hqdefault.jpg)](https://youtu.be/gktg9gnl6EM)
+
+https://youtu.be/gktg9gnl6EM
+
+## Preview
 
 ![Messenger bot sends a message](https://raw.githubusercontent.com/vishwarajanand/FbMessengerGmailIntegration/master/demos/Message-From-FB-Page.png.png "Messenger bot sends a message")
 
@@ -12,7 +18,7 @@ Integrating Facebook Messenger with Gmail
 ![Email can be replied back from any email client](https://raw.githubusercontent.com/vishwarajanand/FbMessengerGmailIntegration/master/demos/Mail-delivered-to-destination.png "Email can be replied back from any email client")
 
 
-# Testing
+## Testing
 
 1. Edit the `configs/defaults.json` with your own configurations.
 
@@ -26,7 +32,7 @@ b. If you use ngrok, buy a certificate and host your server on `https` by `./too
 
 4. Once hosted, if anyone sends a message to your page an email is received and vice versa, if that email is replied, a message is popped in the Facebook Messenger of the user.
 
-# Sources
+## Sources
 
 The system is made up in two parts - both are my previous repos:
 
