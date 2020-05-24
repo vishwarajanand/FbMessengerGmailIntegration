@@ -88,6 +88,8 @@ https://graph.facebook.com/v6.0/me/messages
 ```
 5. We use an email sender plugin to send mails using [SMTP protocol](https://www.npmjs.com/package/nodemailer) and receive them using [IMAP protocol](https://www.npmjs.com/package/mail-notifier).
 
+6. Email replies can be tapped in the messenger bot server, message reply contents can be seperated from the mail thread and replies can be sent to the user using step #4.
+
 ## Common issues
 
 1. FB Page only replies to me, but not someone else?
